@@ -21,7 +21,7 @@
             <Number label="TotalAmount" v-model="value.totalAmount" :editMode="editMode" :inputUI="''"/>
             <Address offline label="Address" v-model="value.address" :editMode="editMode" @change="change"/>
             <OrderItemManager offline label="OrderItems" v-model="value.orderItems" :editMode="editMode" @change="change"/>
-            <Status offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
+            <OrderStatus offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions style="background-color: white;">

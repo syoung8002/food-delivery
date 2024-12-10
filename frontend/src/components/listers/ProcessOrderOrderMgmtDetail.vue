@@ -21,7 +21,7 @@
                 <String label="Comment" v-model="item.comment" :editMode="editMode" @change="change" />
             </div>
             <OrderItemManager offline label="OrderItems" v-model="item.orderItems" :editMode="false" @change="change" />
-            <Status offline label="Status" v-model="item.status" :editMode="false" :key="false" @change="change" />
+            <OrderMgmtStatus offline label="Status" v-model="item.status" :editMode="false" :key="false" @change="change" />
             <Address offline label="Address" v-model="item.address" :editMode="false" @change="change" />
             <div>
                 <Number label="Coupon" v-model="item.coupon" :editMode="editMode" @change="change" />

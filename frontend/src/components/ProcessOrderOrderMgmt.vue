@@ -22,7 +22,7 @@
             <Number label="TotalAmount" v-model="value.totalAmount" :editMode="editMode" :inputUI="''"/>
             <String label="Comment" v-model="value.comment" :editMode="editMode" :inputUI="''"/>
             <OrderItemManager offline label="OrderItems" v-model="value.orderItems" :editMode="editMode" @change="change"/>
-            <Status offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
+            <OrderMgmtStatus offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
             <Address offline label="Address" v-model="value.address" :editMode="editMode" @change="change"/>
             <Number label="Coupon" v-model="value.coupon" :editMode="editMode" :inputUI="''"/>
         </v-card-text>

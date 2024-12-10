@@ -27,12 +27,12 @@ public class EventCollectorViewHandler {
             // view 객체 생성
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
-            eventCollector.setType(OrderPlaced);
+            eventCollector.setType(orderPlaced.getEventType());
             eventCollector.setCorrelationKey(
                 String.valueOf(orderPlaced.getId())
             );
-            eventCollector.setPayload(OrderPlaced);
-            eventCollector.setTimestamp(timestamp);
+            eventCollector.setPayload(orderPlaced.toString());
+            eventCollector.setTimestamp(orderPlaced.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -50,10 +50,10 @@ public class EventCollectorViewHandler {
             // view 객체 생성
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
-            eventCollector.setType(OrderAccepted);
+            eventCollector.setType(orderAccepted.getEventType());
             eventCollector.setCorrelationKey(orderAccepted.getOrderId());
-            eventCollector.setPayload(OrderAccepted);
-            eventCollector.setTimestamp(timestamp);
+            eventCollector.setPayload(orderAccepted.toString());
+            eventCollector.setTimestamp(orderAccepted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -71,10 +71,10 @@ public class EventCollectorViewHandler {
             // view 객체 생성
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
-            eventCollector.setType(OrderRejected);
+            eventCollector.setType(orderRejected.getEventType());
             eventCollector.setCorrelationKey(orderRejected.getOrderId());
-            eventCollector.setPayload(OrderRejected);
-            eventCollector.setTimestamp(timestamp);
+            eventCollector.setPayload(orderRejected.toString());
+            eventCollector.setTimestamp(orderRejected.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -92,10 +92,10 @@ public class EventCollectorViewHandler {
             // view 객체 생성
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
-            eventCollector.setType(CookStarted);
+            eventCollector.setType(cookStarted.getEventType());
             eventCollector.setCorrelationKey(cookStarted.getOrderId());
-            eventCollector.setPayload(CookStarted);
-            eventCollector.setTimestamp(timestamp);
+            eventCollector.setPayload(cookStarted.toString());
+            eventCollector.setTimestamp(cookStarted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -113,10 +113,10 @@ public class EventCollectorViewHandler {
             // view 객체 생성
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
-            eventCollector.setType(CookFinished);
+            eventCollector.setType(cookFinished.getEventType());
             eventCollector.setCorrelationKey(cookFinished.getOrderId());
-            eventCollector.setPayload(CookFinished);
-            eventCollector.setTimestamp(timestamp);
+            eventCollector.setPayload(cookFinished.toString());
+            eventCollector.setTimestamp(cookFinished.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -134,10 +134,10 @@ public class EventCollectorViewHandler {
             // view 객체 생성
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
-            eventCollector.setType(DeliveryStarted);
+            eventCollector.setType(deliveryStarted.getEventType());
             eventCollector.setCorrelationKey(deliveryStarted.getOrderId());
-            eventCollector.setPayload(DeliveryStarted);
-            eventCollector.setTimestamp(timestamp);
+            eventCollector.setPayload(deliveryStarted.toString());
+            eventCollector.setTimestamp(deliveryStarted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -155,10 +155,10 @@ public class EventCollectorViewHandler {
             // view 객체 생성
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
-            eventCollector.setType(DeliveryCompleted);
+            eventCollector.setType(deliveryCompleted.getEventType());
             eventCollector.setCorrelationKey(deliveryCompleted.getOrderId());
-            eventCollector.setPayload(DeliveryCompleted);
-            eventCollector.setTimestamp(timestamp);
+            eventCollector.setPayload(deliveryCompleted.toString());
+            eventCollector.setTimestamp(deliveryCompleted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {

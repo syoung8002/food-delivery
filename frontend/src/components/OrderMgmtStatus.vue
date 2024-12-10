@@ -20,7 +20,7 @@
 
 <script>
     export default {
-        name: 'Status',
+        name: 'OrderMgmtStatus',
         components:{},
         props: {
             value: [Object, String, Number, Boolean, Array],
@@ -31,7 +31,7 @@
             label: String,
         },
         data: () => ({
-            statusList : [ "ORDERPLACED",  "REJECTED", ],
+            statusList : [ "APPROVED", "REJECTED", "COOKSTATED", "COOKFINISHED", ],
             newValue: '',
         }),
         async created() {

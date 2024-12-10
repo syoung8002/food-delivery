@@ -16,7 +16,7 @@
             </div>
             <Address offline label="Address" v-model="item.address" :editMode="false" @change="change" />
             <OrderItemManager offline label="OrderItems" v-model="item.orderItems" :editMode="false" @change="change" />
-            <Status offline label="Status" v-model="item.status" :editMode="false" :key="false" @change="change" />
+            <OrderStatus offline label="Status" v-model="item.status" :editMode="false" :key="false" @change="change" />
         </v-card-text>
 
         <v-card-actions>

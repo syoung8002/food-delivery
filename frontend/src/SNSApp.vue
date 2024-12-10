@@ -57,62 +57,6 @@
 
                     <v-list-item
                         class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-                    <v-list-item
-                        class="px-2"
-                        key=""
-                        to="//"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        
-                    </v-list-item>
-
-
-                    <v-list-item
-                        class="px-2"
                         key="deliveries"
                         to="/riders/deliveries"
                         @click="changeUrl()"
@@ -235,41 +179,6 @@ export default {
                 description: 'OrderMgmt을 관리하는 화면입니다.', 
                 key: 'orderMgmts', 
                 route: '/processOrders/orderMgmts',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '을 관리하는 화면입니다.', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '을 관리하는 화면입니다.', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '을 관리하는 화면입니다.', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '을 관리하는 화면입니다.', 
-                key: '', 
-                route: '//',
-                ImageUrl: '',
-            },
-            { 
-                title: '', 
-                description: '을 관리하는 화면입니다.', 
-                key: '', 
-                route: '//',
                 ImageUrl: '',
             },
             { 

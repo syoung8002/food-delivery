@@ -20,21 +20,6 @@ public class PolicyHandler {
     @Autowired
     OrderMgmtRepository orderMgmtRepository;
 
-    @Autowired
-    Repository Repository;
-
-    @Autowired
-    Repository Repository;
-
-    @Autowired
-    Repository Repository;
-
-    @Autowired
-    Repository Repository;
-
-    @Autowired
-    Repository Repository;
-
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
 
