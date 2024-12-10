@@ -41,11 +41,6 @@ mvn spring-boot:run
 - process order
 ```
  http :8088/orderMgmts id="id" orderId="orderId" userId="userId" storeId="storeId" totalAmount="totalAmount" comment="comment" orderItems="orderItems" status="status" address="address" coupon="coupon" 
- http :8088/ 
- http :8088/ 
- http :8088/ 
- http :8088/ 
- http :8088/ 
 ```
 - rider
 ```

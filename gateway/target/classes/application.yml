@@ -16,17 +16,17 @@ spring:
         - id: process order
           uri: http://localhost:8083
           predicates:
-            - Path=/orderMgmts/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+            - Path=/orderMgmts/**, 
         - id: rider
-          uri: http://localhost:0
+          uri: http://localhost:8084
           predicates:
             - Path=/deliveries/**, 
         - id: dashboard
-          uri: http://localhost:0
+          uri: http://localhost:8085
           predicates:
             - Path=, /orderHistories/**
         - id: eventcollections
-          uri: http://localhost:0
+          uri: http://localhost:8086
           predicates:
             - Path=, /eventCollectors/**
         - id: frontend
@@ -60,7 +60,7 @@ spring:
         - id: process order
           uri: http://processOrder:8080
           predicates:
-            - Path=/orderMgmts/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, /undefined/**, 
+            - Path=/orderMgmts/**, 
         - id: rider
           uri: http://rider:8080
           predicates:
