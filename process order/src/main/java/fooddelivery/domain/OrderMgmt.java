@@ -1,9 +1,6 @@
 package fooddelivery.domain;
 
 import fooddelivery.ProcessOrderApplication;
-import fooddelivery.domain.CookFinished;
-import fooddelivery.domain.CookStarted;
-import fooddelivery.domain.OrderAccepted;
 import fooddelivery.domain.OrderRejected;
 import java.time.LocalDate;
 import java.util.Date;
@@ -42,19 +39,13 @@ public class OrderMgmt {
 
     private Integer coupon;
 
+    @PrePersist
+    public void onPrePersist() {}
+
     @PreUpdate
     public void onPreUpdate() {
-        OrderAccepted orderAccepted = new OrderAccepted(this);
-        orderAccepted.publishAfterCommit();
-
         OrderRejected orderRejected = new OrderRejected(this);
         orderRejected.publishAfterCommit();
-
-        CookStarted cookStarted = new CookStarted(this);
-        cookStarted.publishAfterCommit();
-
-        CookFinished cookFinished = new CookFinished(this);
-        cookFinished.publishAfterCommit();
     }
 
     public static OrderMgmtRepository repository() {
@@ -63,6 +54,34 @@ public class OrderMgmt {
         );
         return orderMgmtRepository;
     }
+
+    //<<< Clean Arch / Port Method
+    public void processOrder(ProcessOrderCommand processOrderCommand) {
+        //implement business logic here:
+
+        OrderAccepted orderAccepted = new OrderAccepted(this);
+        orderAccepted.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public void startCook() {
+        //implement business logic here:
+
+        CookStarted cookStarted = new CookStarted(this);
+        cookStarted.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public void finishCook() {
+        //implement business logic here:
+
+        CookFinished cookFinished = new CookFinished(this);
+        cookFinished.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
 
     //<<< Clean Arch / Port Method
     public static void orderInfoTransfer(OrderPlaced orderPlaced) {

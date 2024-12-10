@@ -1,6 +1,8 @@
 package fooddelivery.domain;
 
 import fooddelivery.RiderApplication;
+import fooddelivery.domain.DeliveryCompleted;
+import fooddelivery.domain.DeliveryStarted;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +28,18 @@ public class Delivery {
     private String riderId;
 
     private String status;
+
+    @PostPersist
+    public void onPostPersist() {
+        DeliveryStarted deliveryStarted = new DeliveryStarted(this);
+        deliveryStarted.publishAfterCommit();
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
+        deliveryCompleted.publishAfterCommit();
+    }
 
     public static DeliveryRepository repository() {
         DeliveryRepository deliveryRepository = RiderApplication.applicationContext.getBean(
