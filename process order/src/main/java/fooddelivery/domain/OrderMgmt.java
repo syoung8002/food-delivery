@@ -60,7 +60,7 @@ public class OrderMgmt {
         //implement business logic here:
 
         OrderAccepted orderAccepted = new OrderAccepted(this);
-        orderAccepted.setOrderId(processOrderCommand.getOrderId());
+        orderAccepted.setOrderId(processOrderCommand.get());
         orderAccepted.publishAfterCommit();
     }
 

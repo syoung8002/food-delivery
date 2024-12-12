@@ -5,6 +5,7 @@
         </v-card-title>
 
         <v-card-text>
+            <Status offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
             <String label="Message" v-model="value.message" :editMode="editMode"/>
         </v-card-text>
 
@@ -41,6 +42,7 @@
             value: {},
         }),
         created() {
+            this.value.status = {};
             this.value.message = '';
         },
         watch: {

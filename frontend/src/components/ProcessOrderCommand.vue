@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <Number label="OrderId" v-model="value.orderId" :editMode="editMode"/>
+            <Status offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions>
@@ -41,7 +41,7 @@
             value: {},
         }),
         created() {
-            this.value.orderId = 0;
+            this.value.status = {};
         },
         watch: {
         },
