@@ -17,9 +17,9 @@ public class OrderHistory {
     private Long id;
 
     private String userId;
-    private String orderId;
+    private Long orderId;
     private String storeId;
-    private Float totalAmount;
+    private Integer totalAmount;
     private String riderId;
     private String status;
 }

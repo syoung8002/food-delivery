@@ -10,10 +10,10 @@ import lombok.*;
 public class CookFinished extends AbstractEvent {
 
     private Long id;
-    private String orderId;
+    private Long orderId;
     private String userId;
     private String storeId;
-    private Float totalAmount;
+    private Integer totalAmount;
     private String comment;
     private Object orderItems;
     private Object address;
