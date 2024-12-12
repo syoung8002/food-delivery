@@ -52,11 +52,11 @@ public class Delivery {
     public static void deliveryInfoTransfer(CookFinished cookFinished) {
         //implement business logic here:
 
-        /** Example 1:  new item 
+        /** Example 1:  new item  */
         Delivery delivery = new Delivery();
+        delivery.setOrderId(cookFinished.getOrderId());
+        delivery.setUserId(cookFinished.getUserId());
         repository().save(delivery);
-
-        */
 
         /** Example 2:  finding and process
         

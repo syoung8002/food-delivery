@@ -48,7 +48,7 @@ public class OrderHistoryViewHandler {
             // view 객체 조회
 
             List<OrderHistory> orderHistoryList = orderHistoryRepository.findByOrderId(
-                orderAccepted.getOrderId()
+                String.valueOf(orderAccepted.getOrderId())
             );
             for (OrderHistory orderHistory : orderHistoryList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
@@ -72,7 +72,7 @@ public class OrderHistoryViewHandler {
             // view 객체 조회
 
             List<OrderHistory> orderHistoryList = orderHistoryRepository.findByOrderId(
-                deliveryStarted.getOrderId()
+                String.valueOf(deliveryStarted.getOrderId())
             );
             for (OrderHistory orderHistory : orderHistoryList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
@@ -94,7 +94,7 @@ public class OrderHistoryViewHandler {
             // view 객체 조회
 
             List<OrderHistory> orderHistoryList = orderHistoryRepository.findByOrderId(
-                deliveryCompleted.getOrderId()
+                String.valueOf(deliveryCompleted.getOrderId())
             );
             for (OrderHistory orderHistory : orderHistoryList) {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함

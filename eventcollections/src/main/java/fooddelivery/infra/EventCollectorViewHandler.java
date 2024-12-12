@@ -55,7 +55,7 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(orderAccepted.getEventType());
-            eventCollector.setCorrelationKey(orderAccepted.getOrderId());
+            eventCollector.setCorrelationKey(String.valueOf(orderAccepted.getOrderId()));
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(orderAccepted);
             eventCollector.setPayload(jsonPayload);
@@ -78,7 +78,7 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(orderRejected.getEventType());
-            eventCollector.setCorrelationKey(orderRejected.getOrderId());
+            eventCollector.setCorrelationKey(String.valueOf(orderRejected.getOrderId()));
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(orderRejected);
             eventCollector.setPayload(jsonPayload);
@@ -101,7 +101,7 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(cookStarted.getEventType());
-            eventCollector.setCorrelationKey(cookStarted.getOrderId());
+            eventCollector.setCorrelationKey(String.valueOf(cookStarted.getOrderId()));
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(cookStarted);
             eventCollector.setPayload(jsonPayload);
@@ -124,7 +124,7 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(cookFinished.getEventType());
-            eventCollector.setCorrelationKey(cookFinished.getOrderId());
+            eventCollector.setCorrelationKey(String.valueOf(cookFinished.getOrderId()));
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(cookFinished);
             eventCollector.setPayload(jsonPayload);
@@ -147,7 +147,7 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(deliveryStarted.getEventType());
-            eventCollector.setCorrelationKey(deliveryStarted.getOrderId());
+            eventCollector.setCorrelationKey(String.valueOf(deliveryStarted.getOrderId()));
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(deliveryStarted);
             eventCollector.setPayload(jsonPayload);
@@ -170,7 +170,7 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(deliveryCompleted.getEventType());
-            eventCollector.setCorrelationKey(deliveryCompleted.getOrderId());
+            eventCollector.setCorrelationKey(String.valueOf(deliveryCompleted.getOrderId()));
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(deliveryCompleted);
             eventCollector.setPayload(jsonPayload);

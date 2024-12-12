@@ -17,7 +17,7 @@ public class OrderHistory {
     private Long id;
 
     private String userId;
-    private Long orderId;
+    private String orderId;
     private String storeId;
     private Integer totalAmount;
     private String riderId;

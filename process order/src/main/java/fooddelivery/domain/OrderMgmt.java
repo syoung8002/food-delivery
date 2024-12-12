@@ -31,7 +31,7 @@ public class OrderMgmt {
     @ElementCollection
     private List<OrderItem> orderItems;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Embedded
@@ -60,7 +60,6 @@ public class OrderMgmt {
         //implement business logic here:
 
         OrderAccepted orderAccepted = new OrderAccepted(this);
-        orderAccepted.setOrderId(processOrderCommand.getOrderId());
         orderAccepted.publishAfterCommit();
     }
 
@@ -70,7 +69,7 @@ public class OrderMgmt {
         //implement business logic here:
 
         CookStarted cookStarted = new CookStarted(this);
-        cookStarted.setOrderId(startCookCommand.get());
+        cookStarted.setComment(startCookCommand.getMessage());
         cookStarted.publishAfterCommit();
     }
 
@@ -80,7 +79,7 @@ public class OrderMgmt {
         //implement business logic here:
 
         CookFinished cookFinished = new CookFinished(this);
-        cookFinished.setOrderId(finishCookCommand.get());
+        cookFinished.setComment(finishCookCommand.getMessage());
         cookFinished.publishAfterCommit();
     }
 
@@ -90,11 +89,15 @@ public class OrderMgmt {
     public static void orderInfoTransfer(OrderPlaced orderPlaced) {
         //implement business logic here:
 
-        /** Example 1:  new item 
+        /** Example 1:  new item */
         OrderMgmt orderMgmt = new OrderMgmt();
+        orderMgmt.setOrderId(orderPlaced.getId());
+        orderMgmt.setUserId(orderPlaced.getUserId());
+        orderMgmt.setStoreId(orderPlaced.getStoreId());
+        orderMgmt.setTotalAmount(orderPlaced.getTotalAmount());
+        orderMgmt.setOrderItems(orderPlaced.getOrderItems());
+        orderMgmt.setAddress(orderPlaced.getAddress());
         repository().save(orderMgmt);
-
-        */
 
         /** Example 2:  finding and process
         
