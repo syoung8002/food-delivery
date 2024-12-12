@@ -5,7 +5,7 @@
         </v-card-title>
 
         <v-card-text>
-            <Status offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
+            <OrderMgmtStatus offline label="Status" v-model="value.status" :editMode="editMode" @change="change"/>
         </v-card-text>
 
         <v-card-actions>

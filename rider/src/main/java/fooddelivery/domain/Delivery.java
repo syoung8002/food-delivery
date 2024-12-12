@@ -45,7 +45,8 @@ public class Delivery {
         //implement business logic here:
 
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);
-        deliveryStarted.setOrderId(pickCommand.get());
+        deliveryStarted.setRiderId(pickCommand.getRiderId());
+        deliveryStarted.setStatus(pickCommand.getStatus());
         deliveryStarted.publishAfterCommit();
     }
 
@@ -55,7 +56,7 @@ public class Delivery {
         //implement business logic here:
 
         DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
-        deliveryCompleted.setOrderId(finishDeliveryCommand.get());
+        deliveryCompleted.setStatus(finishDeliveryCommand.getStatus());
         deliveryCompleted.publishAfterCommit();
     }
 
@@ -69,6 +70,7 @@ public class Delivery {
         Delivery delivery = new Delivery();
         delivery.setOrderId(cookFinished.getOrderId());
         delivery.setUserId(cookFinished.getUserId());
+        delivery.setReceiverAddr(cookFinished.getAddress().toString());
         repository().save(delivery);
 
         /** Example 2:  finding and process
