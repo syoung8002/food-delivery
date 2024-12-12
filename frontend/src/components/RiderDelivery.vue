@@ -39,14 +39,7 @@
                     text
                     @click="save"
                 >
-                    Pick
-                </v-btn>
-                <v-btn
-                    color="primary"
-                    text
-                    @click="save"
-                >
-                    FinishDelivery
+                저장
                 </v-btn>
                 <v-btn
                     color="primary"
@@ -68,6 +61,34 @@
         </v-card-actions>
         <v-card-actions>
             <v-spacer></v-spacer>
+            <v-btn
+                v-if="!editMode"
+                color="primary"
+                text
+                @click="openPick"
+            >
+                Pick
+            </v-btn>
+            <v-dialog v-model="pickDiagram" width="500">
+                <PickCommand
+                    @closeDialog="closePick"
+                    @pick="pick"
+                ></PickCommand>
+            </v-dialog>
+            <v-btn
+                v-if="!editMode"
+                color="primary"
+                text
+                @click="openFinishDelivery"
+            >
+                FinishDelivery
+            </v-btn>
+            <v-dialog v-model="finishDeliveryDiagram" width="500">
+                <FinishDeliveryCommand
+                    @closeDialog="closeFinishDelivery"
+                    @finishDelivery="finishDelivery"
+                ></FinishDeliveryCommand>
+            </v-dialog>
         </v-card-actions>
 
         <v-snackbar
@@ -105,6 +126,8 @@
                 timeout: 5000,
                 text: '',
             },
+            pickDiagram: false,
+            finishDeliveryDiagram: false,
         }),
 	async created() {
         },
@@ -201,6 +224,58 @@
             },
             change(){
                 this.$emit('input', this.value);
+            },
+            async pick(params) {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links['pick'].href), params)
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                    this.closePick();
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            openPick() {
+                this.pickDiagram = true;
+            },
+            closePick() {
+                this.pickDiagram = false;
+            },
+            async finishDelivery(params) {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links['finishdelivery'].href), params)
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                    this.closeFinishDelivery();
+                } catch(e) {
+                    this.snackbar.status = true
+                    if(e.response && e.response.data.message) {
+                        this.snackbar.text = e.response.data.message
+                    } else {
+                        this.snackbar.text = e
+                    }
+                }
+            },
+            openFinishDelivery() {
+                this.finishDeliveryDiagram = true;
+            },
+            closeFinishDelivery() {
+                this.finishDeliveryDiagram = false;
             },
         },
     }

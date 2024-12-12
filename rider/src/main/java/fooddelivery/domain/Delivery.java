@@ -1,8 +1,6 @@
 package fooddelivery.domain;
 
 import fooddelivery.RiderApplication;
-import fooddelivery.domain.DeliveryCompleted;
-import fooddelivery.domain.DeliveryStarted;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -30,16 +28,10 @@ public class Delivery {
     private String status;
 
     @PostPersist
-    public void onPostPersist() {
-        DeliveryStarted deliveryStarted = new DeliveryStarted(this);
-        deliveryStarted.publishAfterCommit();
-    }
+    public void onPostPersist() {}
 
     @PreUpdate
-    public void onPreUpdate() {
-        DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
-        deliveryCompleted.publishAfterCommit();
-    }
+    public void onPreUpdate() {}
 
     public static DeliveryRepository repository() {
         DeliveryRepository deliveryRepository = RiderApplication.applicationContext.getBean(
@@ -47,6 +39,27 @@ public class Delivery {
         );
         return deliveryRepository;
     }
+
+    //<<< Clean Arch / Port Method
+    public void pick(PickCommand pickCommand) {
+        //implement business logic here:
+
+        DeliveryStarted deliveryStarted = new DeliveryStarted(this);
+        deliveryStarted.setOrderId(pickCommand.get());
+        deliveryStarted.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
+    //<<< Clean Arch / Port Method
+    public void finishDelivery(FinishDeliveryCommand finishDeliveryCommand) {
+        //implement business logic here:
+
+        DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
+        deliveryCompleted.setOrderId(finishDeliveryCommand.get());
+        deliveryCompleted.publishAfterCommit();
+    }
+
+    //>>> Clean Arch / Port Method
 
     //<<< Clean Arch / Port Method
     public static void deliveryInfoTransfer(CookFinished cookFinished) {
