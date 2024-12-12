@@ -7,5 +7,6 @@ import lombok.Data;
 @Data
 public class StartCookCommand {
 
+    private Status status;
     private String message;
 }

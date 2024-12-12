@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class ProcessOrderCommand {
 
-    private Long orderId;
+    private Status status;
 }
