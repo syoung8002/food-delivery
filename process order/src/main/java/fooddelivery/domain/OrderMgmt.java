@@ -31,7 +31,7 @@ public class OrderMgmt {
     @ElementCollection
     private List<OrderItem> orderItems;
 
-    @Enumerated(EnumType.STRING)
+    @Embedded
     private Status status;
 
     @Embedded
@@ -97,6 +97,7 @@ public class OrderMgmt {
         orderMgmt.setTotalAmount(orderPlaced.getTotalAmount());
         orderMgmt.setOrderItems(orderPlaced.getOrderItems());
         orderMgmt.setAddress(orderPlaced.getAddress());
+        orderMgmt.setStatus(orderPlaced.getStatus());
         repository().save(orderMgmt);
 
         /** Example 2:  finding and process
