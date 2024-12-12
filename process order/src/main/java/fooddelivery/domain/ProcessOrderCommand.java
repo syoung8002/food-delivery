@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class ProcessOrderCommand {
 
-    private String orderId;
+    private Long orderId;
 }

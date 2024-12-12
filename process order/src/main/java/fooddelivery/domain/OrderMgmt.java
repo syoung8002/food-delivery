@@ -60,6 +60,7 @@ public class OrderMgmt {
         //implement business logic here:
 
         OrderAccepted orderAccepted = new OrderAccepted(this);
+        orderAccepted.setOrderId(processOrderCommand.getOrderId());
         orderAccepted.publishAfterCommit();
     }
 
@@ -69,6 +70,7 @@ public class OrderMgmt {
         //implement business logic here:
 
         CookStarted cookStarted = new CookStarted(this);
+        cookStarted.setOrderId(startCookCommand.get());
         cookStarted.publishAfterCommit();
     }
 
@@ -78,6 +80,7 @@ public class OrderMgmt {
         //implement business logic here:
 
         CookFinished cookFinished = new CookFinished(this);
+        cookFinished.setOrderId(finishCookCommand.get());
         cookFinished.publishAfterCommit();
     }
 

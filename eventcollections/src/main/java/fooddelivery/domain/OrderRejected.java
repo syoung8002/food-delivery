@@ -9,10 +9,10 @@ import lombok.Data;
 public class OrderRejected extends AbstractEvent {
 
     private Long id;
-    private String orderId;
+    private Long orderId;
     private String userId;
     private String storeId;
-    private Float totalAmount;
+    private Integer totalAmount;
     private String comment;
     private List<OrderItem> orderItems;
     private Address address;

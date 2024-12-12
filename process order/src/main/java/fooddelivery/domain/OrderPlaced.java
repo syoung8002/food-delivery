@@ -12,7 +12,7 @@ public class OrderPlaced extends AbstractEvent {
     private Long id;
     private String userId;
     private String storeId;
-    private Float totalAmount;
+    private Integer totalAmount;
     private Object address;
     private Object orderItems;
     private Object status;

@@ -9,7 +9,7 @@ import lombok.Data;
 public class DeliveryCompleted extends AbstractEvent {
 
     private Long id;
-    private String orderId;
+    private Long orderId;
     private String userId;
     private String receiverAddr;
     private String riderId;
