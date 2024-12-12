@@ -16,7 +16,7 @@
         </v-card-title >        
 
         <v-card-text style="background-color: white;">
-            <String label="OrderId" v-model="value.orderId" :editMode="editMode" :inputUI="''"/>
+            <Number label="OrderId" v-model="value.orderId" :editMode="editMode" :inputUI="''"/>
             <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
             <String label="ReceiverAddr" v-model="value.receiverAddr" :editMode="editMode" :inputUI="''"/>
             <String label="RiderId" v-model="value.riderId" :editMode="editMode" :inputUI="''"/>

@@ -122,7 +122,7 @@
             this.values = temp.data._embedded.deliveries;
             
             this.newValue = {
-                'orderId': '',
+                'orderId': 0,
                 'userId': '',
                 'receiverAddr': '',
                 'riderId': '',
