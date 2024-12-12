@@ -22,7 +22,7 @@ public class Order {
 
     private String storeId;
 
-    private Float totalAmount;
+    private Integer totalAmount;
 
     @Embedded
     private Address address;

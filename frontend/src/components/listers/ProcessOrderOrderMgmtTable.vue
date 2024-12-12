@@ -93,7 +93,7 @@
             this.values = temp.data._embedded.ordermgmts;
 
             this.newValue = {
-                'orderId': '',
+                'orderId': 0,
                 'userId': '',
                 'storeId': '',
                 'totalAmount': 0,

@@ -104,7 +104,7 @@
             me.values = temp.data._embedded.deliveries;
             
             me.newValue = {
-                'orderId': '',
+                'orderId': 0,
                 'userId': '',
                 'receiverAddr': '',
                 'riderId': '',

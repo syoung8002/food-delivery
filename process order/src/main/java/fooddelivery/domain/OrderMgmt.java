@@ -18,7 +18,7 @@ public class OrderMgmt {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String orderId;
+    private Long orderId;
 
     private String userId;
 
