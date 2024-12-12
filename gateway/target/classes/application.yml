@@ -26,7 +26,7 @@ spring:
           predicates:
             - Path=, /orderHistories/**
         - id: eventcollections
-          uri: http://localhost:8086
+          uri: http://localhost:9999
           predicates:
             - Path=, /eventCollectors/**
         - id: frontend

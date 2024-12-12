@@ -18,6 +18,8 @@ public class EventCollector {
 
     private String type;
     private String correlationKey;
+    
+    @Lob
     private String payload;
     private Long timestamp;
 }

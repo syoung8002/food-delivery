@@ -10,6 +10,8 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Service
 public class EventCollectorViewHandler {
 
@@ -31,7 +33,9 @@ public class EventCollectorViewHandler {
             eventCollector.setCorrelationKey(
                 String.valueOf(orderPlaced.getId())
             );
-            eventCollector.setPayload(orderPlaced.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonPayload = objectMapper.writeValueAsString(orderPlaced);
+            eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(orderPlaced.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
@@ -52,7 +56,9 @@ public class EventCollectorViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(orderAccepted.getEventType());
             eventCollector.setCorrelationKey(orderAccepted.getOrderId());
-            eventCollector.setPayload(orderAccepted.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonPayload = objectMapper.writeValueAsString(orderAccepted);
+            eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(orderAccepted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
@@ -73,7 +79,9 @@ public class EventCollectorViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(orderRejected.getEventType());
             eventCollector.setCorrelationKey(orderRejected.getOrderId());
-            eventCollector.setPayload(orderRejected.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonPayload = objectMapper.writeValueAsString(orderRejected);
+            eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(orderRejected.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
@@ -94,7 +102,9 @@ public class EventCollectorViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(cookStarted.getEventType());
             eventCollector.setCorrelationKey(cookStarted.getOrderId());
-            eventCollector.setPayload(cookStarted.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonPayload = objectMapper.writeValueAsString(cookStarted);
+            eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(cookStarted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
@@ -115,7 +125,9 @@ public class EventCollectorViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(cookFinished.getEventType());
             eventCollector.setCorrelationKey(cookFinished.getOrderId());
-            eventCollector.setPayload(cookFinished.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonPayload = objectMapper.writeValueAsString(cookFinished);
+            eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(cookFinished.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
@@ -136,7 +148,9 @@ public class EventCollectorViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(deliveryStarted.getEventType());
             eventCollector.setCorrelationKey(deliveryStarted.getOrderId());
-            eventCollector.setPayload(deliveryStarted.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonPayload = objectMapper.writeValueAsString(deliveryStarted);
+            eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(deliveryStarted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
@@ -157,7 +171,9 @@ public class EventCollectorViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(deliveryCompleted.getEventType());
             eventCollector.setCorrelationKey(deliveryCompleted.getOrderId());
-            eventCollector.setPayload(deliveryCompleted.toString());
+            ObjectMapper objectMapper = new ObjectMapper();
+            String jsonPayload = objectMapper.writeValueAsString(deliveryCompleted);
+            eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(deliveryCompleted.getTimestamp());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);

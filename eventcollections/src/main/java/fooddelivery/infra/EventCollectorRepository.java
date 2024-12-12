@@ -10,4 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
     path = "eventCollectors"
 )
 public interface EventCollectorRepository
-    extends PagingAndSortingRepository<EventCollector, Long> {}
+    extends PagingAndSortingRepository<EventCollector, Long> {
+
+        List<EventCollector> findByCorrelationKey(String correlationKey);
+    }
