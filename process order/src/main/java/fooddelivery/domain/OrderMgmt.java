@@ -31,7 +31,7 @@ public class OrderMgmt {
     @ElementCollection
     private List<OrderItem> orderItems;
 
-    @Enumerated(EnumType.STRING)
+    @Embedded
     private Status status;
 
     @Embedded
@@ -65,7 +65,7 @@ public class OrderMgmt {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public void startCook() {
+    public void startCook(StartCookCommand startCookCommand) {
         //implement business logic here:
 
         CookStarted cookStarted = new CookStarted(this);
@@ -74,7 +74,7 @@ public class OrderMgmt {
 
     //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
-    public void finishCook() {
+    public void finishCook(FinishCookCommand finishCookCommand) {
         //implement business logic here:
 
         CookFinished cookFinished = new CookFinished(this);

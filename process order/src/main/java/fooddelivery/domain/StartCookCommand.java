@@ -5,4 +5,7 @@ import java.util.*;
 import lombok.Data;
 
 @Data
-public class StartCookCommand {}
+public class StartCookCommand {
+
+    private String message;
+}
