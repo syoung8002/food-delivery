@@ -8,5 +8,4 @@ import lombok.Data;
 public class ProcessOrderCommand {
 
     private String orderId;
-    private String userId;
 }

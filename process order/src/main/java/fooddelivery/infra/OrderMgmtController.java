@@ -51,6 +51,7 @@ public class OrderMgmtController {
     )
     public OrderMgmt startCook(
         @PathVariable(value = "id") Long id,
+        @RequestBody StartCookCommand startCookCommand,
         HttpServletRequest request,
         HttpServletResponse response
     ) throws Exception {
@@ -61,7 +62,7 @@ public class OrderMgmtController {
 
         optionalOrderMgmt.orElseThrow(() -> new Exception("No Entity Found"));
         OrderMgmt orderMgmt = optionalOrderMgmt.get();
-        orderMgmt.startCook();
+        orderMgmt.startCook(startCookCommand);
 
         orderMgmtRepository.save(orderMgmt);
         return orderMgmt;
@@ -74,6 +75,7 @@ public class OrderMgmtController {
     )
     public OrderMgmt finishCook(
         @PathVariable(value = "id") Long id,
+        @RequestBody FinishCookCommand finishCookCommand,
         HttpServletRequest request,
         HttpServletResponse response
     ) throws Exception {
@@ -84,7 +86,7 @@ public class OrderMgmtController {
 
         optionalOrderMgmt.orElseThrow(() -> new Exception("No Entity Found"));
         OrderMgmt orderMgmt = optionalOrderMgmt.get();
-        orderMgmt.finishCook();
+        orderMgmt.finishCook(finishCookCommand);
 
         orderMgmtRepository.save(orderMgmt);
         return orderMgmt;

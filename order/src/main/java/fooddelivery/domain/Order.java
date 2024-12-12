@@ -30,7 +30,7 @@ public class Order {
     @ElementCollection
     private List<OrderItem> orderItems;
 
-    @Enumerated(EnumType.STRING)
+    @Embedded
     private Status status;
 
     @PostPersist

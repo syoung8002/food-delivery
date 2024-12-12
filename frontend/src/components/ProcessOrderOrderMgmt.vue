@@ -83,18 +83,30 @@
                 v-if="!editMode"
                 color="primary"
                 text
-                @click="startCook"
+                @click="openStartCook"
             >
                 StartCook
             </v-btn>
+            <v-dialog v-model="startCookDiagram" width="500">
+                <StartCookCommand
+                    @closeDialog="closeStartCook"
+                    @startCook="startCook"
+                ></StartCookCommand>
+            </v-dialog>
             <v-btn
                 v-if="!editMode"
                 color="primary"
                 text
-                @click="finishCook"
+                @click="openFinishCook"
             >
                 FinishCook
             </v-btn>
+            <v-dialog v-model="finishCookDiagram" width="500">
+                <FinishCookCommand
+                    @closeDialog="closeFinishCook"
+                    @finishCook="finishCook"
+                ></FinishCookCommand>
+            </v-dialog>
         </v-card-actions>
 
         <v-snackbar
@@ -135,6 +147,8 @@
                 text: '',
             },
             processOrderDiagram: false,
+            startCookDiagram: false,
+            finishCookDiagram: false,
         }),
 	async created() {
         },
@@ -258,16 +272,17 @@
             closeProcessOrder() {
                 this.processOrderDiagram = false;
             },
-            async startCook() {
+            async startCook(params) {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['startcook'].href))
+                        var temp = await axios.put(axios.fixUrl(this.value._links['startcook'].href), params)
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
                     }
 
                     this.editMode = false;
+                    this.closeStartCook();
                 } catch(e) {
                     this.snackbar.status = true
                     if(e.response && e.response.data.message) {
@@ -277,16 +292,23 @@
                     }
                 }
             },
-            async finishCook() {
+            openStartCook() {
+                this.startCookDiagram = true;
+            },
+            closeStartCook() {
+                this.startCookDiagram = false;
+            },
+            async finishCook(params) {
                 try {
                     if(!this.offline) {
-                        var temp = await axios.put(axios.fixUrl(this.value._links['finishcook'].href))
+                        var temp = await axios.put(axios.fixUrl(this.value._links['finishcook'].href), params)
                         for(var k in temp.data) {
                             this.value[k]=temp.data[k];
                         }
                     }
 
                     this.editMode = false;
+                    this.closeFinishCook();
                 } catch(e) {
                     this.snackbar.status = true
                     if(e.response && e.response.data.message) {
@@ -295,6 +317,12 @@
                         this.snackbar.text = e
                     }
                 }
+            },
+            openFinishCook() {
+                this.finishCookDiagram = true;
+            },
+            closeFinishCook() {
+                this.finishCookDiagram = false;
             },
         },
     }
