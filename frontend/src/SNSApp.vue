@@ -79,17 +79,6 @@
                     >
                         OrderHistory
                     </v-list-item>
-
-                    <v-list-item
-                        class="px-2"
-                        key="eventCollectors"
-                        to="/eventcollections/eventCollectors"
-                        @click="changeUrl()"
-                        color="primary"
-                        style="font-weight:700;"
-                    >
-                        EventCollector
-                    </v-list-item>
                 </v-list>
             </v-navigation-drawer>
         </div>
@@ -194,13 +183,6 @@ export default {
                 description: 'OrderHistory을 관리하는 화면입니다.', 
                 key: 'orderHistories', 
                 route: '/dashboards/orderHistories',
-                ImageUrl: '',
-            },
-            { 
-                title: 'EventCollector', 
-                description: 'eventCollector을 관리하는 화면입니다.', 
-                key: 'eventCollectors', 
-                route: '/eventcollections/eventCollectors',
                 ImageUrl: '',
             },
             

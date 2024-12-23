@@ -18,9 +18,6 @@ import RiderDeliveryDetail from "./components/listers/RiderDeliveryDetail"
 import OrderHistoryView from "./components/OrderHistoryView"
 import OrderHistoryViewDetail from "./components/OrderHistoryViewDetail"
 
-import EventCollectorView from "./components/EventCollectorView"
-import EventCollectorViewDetail from "./components/EventCollectorViewDetail"
-
 export default new Router({
     // mode: 'history',
     base: process.env.BASE_URL,
@@ -68,17 +65,6 @@ export default new Router({
                 path: '/dashboards/orderHistories/:id',
                 name: 'OrderHistoryViewDetail',
                 component: OrderHistoryViewDetail
-            },
-
-            {
-                path: '/eventcollections/eventCollectors',
-                name: 'EventCollectorView',
-                component: EventCollectorView
-            },
-            {
-                path: '/eventcollections/eventCollectors/:id',
-                name: 'EventCollectorViewDetail',
-                component: EventCollectorViewDetail
             },
 
 

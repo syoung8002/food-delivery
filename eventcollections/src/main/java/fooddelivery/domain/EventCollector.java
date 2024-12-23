@@ -13,11 +13,15 @@ import lombok.Data;
 public class EventCollector {
 
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String type;
     private String correlationKey;
+
+    @Lob
     private String payload;
+
     private Long timestamp;
+    private String userId;
 }

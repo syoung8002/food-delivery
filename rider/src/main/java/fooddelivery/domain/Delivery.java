@@ -1,9 +1,11 @@
 package fooddelivery.domain;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fooddelivery.RiderApplication;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -73,6 +75,7 @@ public class Delivery {
 
         /** Example 2:  finding and process
         
+
         repository().findById(cookFinished.get???()).ifPresent(delivery->{
             
             delivery // do something

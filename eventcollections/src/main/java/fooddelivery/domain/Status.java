@@ -7,9 +7,8 @@ import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 public enum Status {
-    ORDERPLACED,
     APPROVED,
     REJECTED,
     COOKSTATED,
-    COOKFINISHED
+    COOKFINISHED,
 }

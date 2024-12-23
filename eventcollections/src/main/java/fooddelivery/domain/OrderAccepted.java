@@ -1,10 +1,10 @@
 package fooddelivery.domain;
 
 import fooddelivery.infra.AbstractEvent;
-import java.time.LocalDate;
 import java.util.*;
-import lombok.Data;
+import lombok.*;
 
+//<<< DDD / Domain Event
 @Data
 public class OrderAccepted extends AbstractEvent {
 
@@ -18,3 +18,4 @@ public class OrderAccepted extends AbstractEvent {
     private Address address;
     private Status status;
 }
+//>>> DDD / Domain Event

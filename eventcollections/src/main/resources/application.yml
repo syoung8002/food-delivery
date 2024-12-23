@@ -6,6 +6,7 @@ spring:
     name: eventcollections
 ---
 
+
 spring:
   profiles: default
   jpa:
@@ -47,9 +48,10 @@ logging:
 
 
 server:
-  port: 8086
+  port: 9999
 
 ---
+
 
 spring:
   profiles: docker
