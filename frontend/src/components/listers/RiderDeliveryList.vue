@@ -54,7 +54,7 @@
                             [ UserId :  {{data.userId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ ReceiverAddr :  {{data.receiverAddr }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             [ RiderId :  {{data.riderId }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            [ Status :  {{data.status }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            [ Message :  {{data.message }} ] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </v-list-item-subtitle>
 
                     </v-list-item-content>
@@ -126,7 +126,7 @@
                 'userId': '',
                 'receiverAddr': '',
                 'riderId': '',
-                'status': '',
+                'message': '',
             }
         },
         methods: {

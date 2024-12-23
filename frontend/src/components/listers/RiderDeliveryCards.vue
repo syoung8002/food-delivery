@@ -108,7 +108,7 @@
                 'userId': '',
                 'receiverAddr': '',
                 'riderId': '',
-                'status': '',
+                'message': '',
             }
         },
         methods:{

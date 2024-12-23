@@ -1,5 +1,6 @@
 package fooddelivery.infra;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fooddelivery.config.kafka.KafkaProcessor;
 import fooddelivery.domain.*;
 import java.io.IOException;
@@ -10,8 +11,6 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 @Service
 public class EventCollectorViewHandler {
 
@@ -20,9 +19,7 @@ public class EventCollectorViewHandler {
     private EventCollectorRepository eventCollectorRepository;
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenOrderPlaced_then_CREATE_1(
-        @Payload OrderPlaced orderPlaced
-    ) {
+    public void whenOrderPlaced_then_CREATE(@Payload OrderPlaced orderPlaced) {
         try {
             if (!orderPlaced.validate()) return;
 
@@ -37,6 +34,7 @@ public class EventCollectorViewHandler {
             String jsonPayload = objectMapper.writeValueAsString(orderPlaced);
             eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(orderPlaced.getTimestamp());
+            eventCollector.setUserId(orderPlaced.getUserId());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -45,7 +43,7 @@ public class EventCollectorViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenOrderAccepted_then_CREATE_2(
+    public void whenOrderAccepted_then_CREATE(
         @Payload OrderAccepted orderAccepted
     ) {
         try {
@@ -55,11 +53,14 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(orderAccepted.getEventType());
-            eventCollector.setCorrelationKey(String.valueOf(orderAccepted.getOrderId()));
+            eventCollector.setCorrelationKey(
+                String.valueOf(orderAccepted.getOrderId())
+            );
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(orderAccepted);
             eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(orderAccepted.getTimestamp());
+            eventCollector.setUserId(orderAccepted.getUserId());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -68,7 +69,7 @@ public class EventCollectorViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenOrderRejected_then_CREATE_3(
+    public void whenOrderRejected_then_CREATE(
         @Payload OrderRejected orderRejected
     ) {
         try {
@@ -78,11 +79,14 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(orderRejected.getEventType());
-            eventCollector.setCorrelationKey(String.valueOf(orderRejected.getOrderId()));
+            eventCollector.setCorrelationKey(
+                String.valueOf(orderRejected.getOrderId())
+            );
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(orderRejected);
             eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(orderRejected.getTimestamp());
+            eventCollector.setUserId(orderRejected.getUserId());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -91,9 +95,7 @@ public class EventCollectorViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenCookStarted_then_CREATE_4(
-        @Payload CookStarted cookStarted
-    ) {
+    public void whenCookStarted_then_CREATE(@Payload CookStarted cookStarted) {
         try {
             if (!cookStarted.validate()) return;
 
@@ -101,11 +103,14 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(cookStarted.getEventType());
-            eventCollector.setCorrelationKey(String.valueOf(cookStarted.getOrderId()));
+            eventCollector.setCorrelationKey(
+                String.valueOf(cookStarted.getOrderId())
+            );
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(cookStarted);
             eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(cookStarted.getTimestamp());
+            eventCollector.setUserId(cookStarted.getUserId());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -114,7 +119,7 @@ public class EventCollectorViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenCookFinished_then_CREATE_5(
+    public void whenCookFinished_then_CREATE(
         @Payload CookFinished cookFinished
     ) {
         try {
@@ -124,11 +129,14 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(cookFinished.getEventType());
-            eventCollector.setCorrelationKey(String.valueOf(cookFinished.getOrderId()));
+            eventCollector.setCorrelationKey(
+                String.valueOf(cookFinished.getOrderId())
+            );
             ObjectMapper objectMapper = new ObjectMapper();
             String jsonPayload = objectMapper.writeValueAsString(cookFinished);
             eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(cookFinished.getTimestamp());
+            eventCollector.setUserId(cookFinished.getUserId());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -137,7 +145,7 @@ public class EventCollectorViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenDeliveryStarted_then_CREATE_6(
+    public void whenDeliveryStarted_then_CREATE(
         @Payload DeliveryStarted deliveryStarted
     ) {
         try {
@@ -147,11 +155,16 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(deliveryStarted.getEventType());
-            eventCollector.setCorrelationKey(String.valueOf(deliveryStarted.getOrderId()));
+            eventCollector.setCorrelationKey(
+                String.valueOf(deliveryStarted.getOrderId())
+            );
             ObjectMapper objectMapper = new ObjectMapper();
-            String jsonPayload = objectMapper.writeValueAsString(deliveryStarted);
+            String jsonPayload = objectMapper.writeValueAsString(
+                deliveryStarted
+            );
             eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(deliveryStarted.getTimestamp());
+            eventCollector.setUserId(deliveryStarted.getUserId());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {
@@ -160,7 +173,7 @@ public class EventCollectorViewHandler {
     }
 
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenDeliveryCompleted_then_CREATE_7(
+    public void whenDeliveryCompleted_then_CREATE(
         @Payload DeliveryCompleted deliveryCompleted
     ) {
         try {
@@ -170,11 +183,16 @@ public class EventCollectorViewHandler {
             EventCollector eventCollector = new EventCollector();
             // view 객체에 이벤트의 Value 를 set 함
             eventCollector.setType(deliveryCompleted.getEventType());
-            eventCollector.setCorrelationKey(String.valueOf(deliveryCompleted.getOrderId()));
+            eventCollector.setCorrelationKey(
+                String.valueOf(deliveryCompleted.getOrderId())
+            );
             ObjectMapper objectMapper = new ObjectMapper();
-            String jsonPayload = objectMapper.writeValueAsString(deliveryCompleted);
+            String jsonPayload = objectMapper.writeValueAsString(
+                deliveryCompleted
+            );
             eventCollector.setPayload(jsonPayload);
             eventCollector.setTimestamp(deliveryCompleted.getTimestamp());
+            eventCollector.setUserId(deliveryCompleted.getUserId());
             // view 레파지 토리에 save
             eventCollectorRepository.save(eventCollector);
         } catch (Exception e) {

@@ -27,7 +27,7 @@
                                 RiderId :  {{item.riderId }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                Status :  {{item.status }}
+                                Message :  {{item.message }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 

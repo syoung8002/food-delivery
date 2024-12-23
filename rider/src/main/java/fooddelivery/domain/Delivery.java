@@ -25,7 +25,7 @@ public class Delivery {
 
     private String riderId;
 
-    private String status;
+    private String message;
 
     @PostPersist
     public void onPostPersist() {}
@@ -46,7 +46,7 @@ public class Delivery {
 
         DeliveryStarted deliveryStarted = new DeliveryStarted(this);
         deliveryStarted.setRiderId(pickCommand.getRiderId());
-        deliveryStarted.setStatus(pickCommand.getStatus());
+        deliveryStarted.setMessage(pickCommand.getMessage());
         deliveryStarted.publishAfterCommit();
     }
 
@@ -56,7 +56,7 @@ public class Delivery {
         //implement business logic here:
 
         DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
-        deliveryCompleted.setStatus(finishDeliveryCommand.getStatus());
+        deliveryCompleted.setMessage(finishDeliveryCommand.getMessage());
         deliveryCompleted.publishAfterCommit();
     }
 

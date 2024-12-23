@@ -8,5 +8,5 @@ import lombok.Data;
 public class PickCommand {
 
     private String riderId;
-    private String status;
+    private String message;
 }

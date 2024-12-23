@@ -22,4 +22,5 @@ public class EventCollector {
     @Lob
     private String payload;
     private Long timestamp;
+    private String userId;
 }

@@ -71,7 +71,7 @@
                     { text: "userId", value: "userId" },
                     { text: "receiverAddr", value: "receiverAddr" },
                     { text: "riderId", value: "riderId" },
-                    { text: "status", value: "status" },
+                    { text: "message", value: "message" },
                 ],
             delivery : [],
             newValue: {},
@@ -93,7 +93,7 @@
                 'userId': '',
                 'receiverAddr': '',
                 'riderId': '',
-                'status': '',
+                'message': '',
             }
         },
         methods: {

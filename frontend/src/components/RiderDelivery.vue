@@ -20,7 +20,7 @@
             <String label="UserId" v-model="value.userId" :editMode="editMode" :inputUI="''"/>
             <String label="ReceiverAddr" v-model="value.receiverAddr" :editMode="editMode" :inputUI="''"/>
             <String label="RiderId" v-model="value.riderId" :editMode="editMode" :inputUI="''"/>
-            <String label="Status" v-model="value.status" :editMode="editMode" :inputUI="''"/>
+            <String label="Message" v-model="value.message" :editMode="editMode" :inputUI="''"/>
         </v-card-text>
 
         <v-card-actions style="background-color: white;">

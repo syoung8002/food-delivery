@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 public class FinishDeliveryCommand {
 
-    private String status;
+    private String message;
 }
