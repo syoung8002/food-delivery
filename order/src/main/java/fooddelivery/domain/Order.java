@@ -1,10 +1,12 @@
 package fooddelivery.domain;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fooddelivery.OrderApplication;
 import fooddelivery.domain.OrderPlaced;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -30,7 +32,7 @@ public class Order {
     @ElementCollection
     private List<OrderItem> orderItems;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @PostPersist

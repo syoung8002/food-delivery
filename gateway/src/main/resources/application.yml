@@ -25,14 +25,14 @@ spring:
           uri: http://localhost:8085
           predicates:
             - Path=, /orderHistories/**
-        - id: eventcollections
-          uri: http://localhost:9999
-          predicates:
-            - Path=, /eventCollectors/**
         - id: frontend
           uri: http://localhost:8080
           predicates:
             - Path=/**
+        - id: eventcollections
+          uri: http://localhost:9999
+          predicates:
+            - Path=/eventCollectors/**
 #>>> API Gateway / Routes
       globalcors:
         corsConfigurations:
@@ -69,14 +69,14 @@ spring:
           uri: http://dashboard:8080
           predicates:
             - Path=, 
-        - id: eventcollections
-          uri: http://eventcollections:8080
-          predicates:
-            - Path=, 
         - id: frontend
           uri: http://frontend:8080
           predicates:
             - Path=/**
+        - id: eventcollections
+          uri: http://eventcollections:8080
+          predicates:
+            - Path=/eventCollectors/**
       globalcors:
         corsConfigurations:
           '[/**]':

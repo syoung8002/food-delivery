@@ -1,4 +1,4 @@
-package fooddelivery.config.kafka;
+package fooddelivery.config;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

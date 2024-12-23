@@ -24,7 +24,6 @@ See the README.md files inside the each microservices directory:
 - process order
 - rider
 - dashboard
-- eventcollections
 
 
 ## Run API Gateway (Spring Gateway)
@@ -47,9 +46,6 @@ mvn spring-boot:run
  http :8088/deliveries id="id" orderId="orderId" userId="userId" receiverAddr="receiverAddr" riderId="riderId" status="status" 
 ```
 - dashboard
-```
-```
-- eventcollections
 ```
 ```
 

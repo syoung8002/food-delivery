@@ -1,10 +1,12 @@
 package fooddelivery.domain;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fooddelivery.ProcessOrderApplication;
 import fooddelivery.domain.OrderRejected;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -31,7 +33,7 @@ public class OrderMgmt {
     @ElementCollection
     private List<OrderItem> orderItems;
 
-    @Embedded
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @Embedded
@@ -105,6 +107,11 @@ public class OrderMgmt {
 
         /** Example 2:  finding and process
         
+        // if orderPlaced.pgId exists, use it
+        
+        // ObjectMapper mapper = new ObjectMapper();
+        // Map<, Object> orderMap = mapper.convertValue(orderPlaced.getPgId(), Map.class);
+
         repository().findById(orderPlaced.get???()).ifPresent(orderMgmt->{
             
             orderMgmt // do something
